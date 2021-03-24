@@ -9,10 +9,10 @@
 #
 
 {% set name = "pycuda" %}
-{% set version = "2016.1.2" %}
-{% set sha256 = "a7dbdac7e2f0c0d2ad98f5f281d5a9d29d6673b3c20210e261b96e9a2d0b6e37" %}
+{% set version = "2020.1" %}
+{% set sha256 = "effa3b99b55af67f3afba9b0d1b64b4a0add4dd6a33bdd6786df1aa4cc8761a5" %}
 
-{% set cuda_version = "8.0" %}
+{% set cuda_version = "11.0" %}
 
 package:
   name: {{ name|lower }}
@@ -20,12 +20,12 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://files.pythonhosted.org/packages/46/61/47d3235a4c13eec5a5f03594ddb268f4858734e02980afbcd806e6242fa5/pycuda-2020.1.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 3
-  skip: true  # [not linux]
+  number: 0
+  # skip: true  # [not linux]
   script:
     - python configure.py --cuda-root=/usr/local/cuda/  # it would work magically anyway
     - python setup.py install --single-version-externally-managed --record record.txt
